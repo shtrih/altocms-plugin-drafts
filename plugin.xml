@@ -1,22 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin>
-	<name>
-		<lang name="default">Drafts</lang>
-		<lang name="russian">Черновики</lang>
-	</name>
-	<author>
-        <lang name="default">Alexandr Verenik</lang>
-        <lang name="russian">Александр Вереник</lang>
-	</author>
-	<homepage>https://github.com/wasja1982/livestreet_drafts</homepage>
-	<version>1.0.2</version>
-	<requires>
-		<livestreet>1.0.3</livestreet>
-		<plugins>
-		</plugins>
-	</requires>
-	<description>
-		<lang name="default">Drafts</lang>
-		<lang name="russian">Позволяет администраторам просматривать черновики пользователей.</lang>
-	</description>
+    <id>drafts</id>
+    <name>
+        <lang name="default">Drafts</lang>
+        <lang name="russian">Черновики</lang>
+    </name>
+    <author>
+        <lang name="default">Alexandr Verenik, shtrih</lang>
+        <lang name="russian">Александр Вереник, shtrih</lang>
+    </author>
+    <homepage>https://github.com/shtrih/livestreet_drafts</homepage>
+    <version>1.0.0</version>
+    <dirname>drafts</dirname>
+    <requires>
+        <alto>
+            <version>1.1.0</version>
+        </alto>
+        <system>
+            <php>5.3.0</php>
+        </system>
+        <plugins>
+        </plugins>
+    </requires>
+    <description>
+        <lang name="default">Drafts</lang>
+        <lang name="russian">Позволяет администраторам просматривать черновики пользователей.</lang>
+    </description>
 </plugin>

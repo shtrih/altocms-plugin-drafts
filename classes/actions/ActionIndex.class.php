@@ -2,11 +2,12 @@
 /**
  * Drafts - доступ к черновикам пользователей
  *
- * Версия:	1.0.2
  * Автор:	Александр Вереник
  * Профиль:	http://livestreet.ru/profile/Wasja/
  * GitHub:	https://github.com/wasja1982/livestreet_drafts
  *
+ * Автор адаптации под Alto CMS: shtrih
+ * GitHub: https://github.com/shtrih/altocms-plugin-drafts
  **/
 
 class PluginDrafts_ActionIndex extends PluginDrafts_Inherit_ActionIndex
@@ -62,4 +63,3 @@ class PluginDrafts_ActionIndex extends PluginDrafts_Inherit_ActionIndex
         $this->SetTemplateAction('index');
     }
 }
-?>
