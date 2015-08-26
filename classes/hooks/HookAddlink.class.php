@@ -14,7 +14,7 @@ class PluginDrafts_HookAddlink extends Hook
 {
     public function RegisterHook()
     {
-        if ($this->User_IsAuthorization() and $this->User_GetUserCurrent()->isAdministrator()) {
+        if (E::IsAdmin()) {
             if (Config::Get('plugin.drafts.show_personal')) {
                 $this->AddHook('template_menu_blog_log_item', 'InjectLogLink');
             }

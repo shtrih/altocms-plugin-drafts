@@ -11,12 +11,12 @@
  **/
 
 // Отображать личные черновики (из персональных блогов пользователей).
-$config['show_personal']=true;
+$config['show_personal'] = true;
 
 // Отображать черновики из блогов.
-$config['show_blog']=true;
+$config['show_blog'] = true;
 
 // Отображать черновики в профилях пользователей.
-$config['show_profile']=true;
+$config['show_profile'] = true;
 
 return $config;

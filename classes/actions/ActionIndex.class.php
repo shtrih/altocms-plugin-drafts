@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Drafts - доступ к черновикам пользователей
  *
- * Автор:	Александр Вереник
- * Профиль:	http://livestreet.ru/profile/Wasja/
- * GitHub:	https://github.com/wasja1982/livestreet_drafts
+ * Автор:    Александр Вереник
+ * Профиль:    http://livestreet.ru/profile/Wasja/
+ * GitHub:    https://github.com/wasja1982/livestreet_drafts
  *
  * Автор адаптации под Alto CMS: shtrih
  * GitHub: https://github.com/shtrih/altocms-plugin-drafts
  **/
-
 class PluginDrafts_ActionIndex extends PluginDrafts_Inherit_ActionIndex
 {
     /**
@@ -18,7 +18,7 @@ class PluginDrafts_ActionIndex extends PluginDrafts_Inherit_ActionIndex
      */
     protected function RegisterEvent() {
         if (Config::Get('plugin.drafts.show_personal') || Config::Get('plugin.drafts.show_blog')) {
-            $this->AddEventPreg('/^draft$/i','/^(page([1-9]\d{0,5}))?$/i','EventDraft');
+            $this->AddEventPreg('/^draft$/i', '/^(page([1-9]\d{0,5}))?$/i', 'EventDraft');
         }
         parent::RegisterEvent();
     }
@@ -27,36 +27,42 @@ class PluginDrafts_ActionIndex extends PluginDrafts_Inherit_ActionIndex
      * Вывод всех черновиков
      */
     protected function EventDraft() {
-        if (!$this->User_GetUserCurrent() || !$this->User_GetUserCurrent()->isAdministrator()) {
+        if (!E::IsAdmin()) {
             return parent::EventNotFound();
         }
-        $this->Viewer_SetHtmlRssAlternate(Router::GetPath('rss').'draft/',Config::Get('view.name'));
+        E::ModuleViewer()->SetHtmlRssAlternate(Router::GetPath('rss') . 'draft/', Config::Get('view.name'));
         /**
          * Меню
          */
-        $this->sMenuSubItemSelect='draft';
+        $this->sMenuSubItemSelect = 'draft';
         /**
          * Передан ли номер страницы
          */
-        $iPage=$this->GetParamEventMatch(0,2) ? $this->GetParamEventMatch(0,2) : 1;
+        $iPage = $this->GetParamEventMatch(0, 2) ? $this->GetParamEventMatch(0, 2) : 1;
         /**
          * Получаем список топиков
          */
-        $aResult=$this->Topic_GetTopicsDraftAll($iPage,Config::Get('module.topic.per_page'));
-        $aTopics=$aResult['collection'];
+        $aResult = E::ModuleTopic()->GetTopicsDraftAll($iPage, Config::Get('module.topic.per_page'));
+        $aTopics = $aResult['collection'];
         /**
          * Вызов хуков
          */
-        $this->Hook_Run('topics_list_show',array('aTopics'=>$aTopics));
+        E::ModuleHook()->Run('topics_list_show', array('aTopics' => $aTopics));
         /**
          * Формируем постраничность
          */
-        $aPaging=$this->Viewer_MakePaging($aResult['count'],$iPage,Config::Get('module.topic.per_page'),Config::Get('pagination.pages.count'),Router::GetPath('index').'draft');
+        $aPaging = E::ModuleViewer()->MakePaging(
+            $aResult['count'],
+            $iPage,
+            Config::Get('module.topic.per_page'),
+            Config::Get('pagination.pages.count'),
+            Router::GetPath('index') . 'draft'
+        );
         /**
          * Загружаем переменные в шаблон
          */
-        $this->Viewer_Assign('aTopics',$aTopics);
-        $this->Viewer_Assign('aPaging',$aPaging);
+        E::ModuleViewer()->Assign('aTopics', $aTopics);
+        E::ModuleViewer()->Assign('aPaging', $aPaging);
         /**
          * Устанавливаем шаблон вывода
          */
