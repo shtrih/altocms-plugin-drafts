@@ -15,9 +15,6 @@ class PluginDrafts_HookAddlink extends Hook
     public function RegisterHook()
     {
         if (E::IsAdmin()) {
-            if (Config::Get('plugin.drafts.show_personal')) {
-                $this->AddHook('template_menu_blog_log_item', 'InjectLogLink');
-            }
             if (Config::Get('plugin.drafts.show_blog')) {
                 $this->AddHook('template_menu_blog_blog_item', 'InjectBlogLink');
             }
@@ -41,14 +38,6 @@ class PluginDrafts_HookAddlink extends Hook
     public function InjectIndexLink($aParam)
     {
         $sTemplatePath = Plugin::GetTemplatePath(__CLASS__) . 'inject_index_link.tpl';
-        if ($this->Viewer_TemplateExists($sTemplatePath)) {
-            return $this->Viewer_Fetch($sTemplatePath);
-        }
-    }
-
-    public function InjectLogLink($aParam)
-    {
-        $sTemplatePath = Plugin::GetTemplatePath(__CLASS__) . 'inject_log_link.tpl';
         if ($this->Viewer_TemplateExists($sTemplatePath)) {
             return $this->Viewer_Fetch($sTemplatePath);
         }
