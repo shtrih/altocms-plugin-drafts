@@ -27,27 +27,27 @@ class PluginDrafts_HookAddlink extends Hook
         }
     }
 
-    public function InjectBlogLink($aParam)
+    public function InjectBlogLink()
     {
         $sTemplatePath = Plugin::GetTemplatePath(__CLASS__) . 'inject_blog_link.tpl';
-        if ($this->Viewer_TemplateExists($sTemplatePath)) {
-            return $this->Viewer_Fetch($sTemplatePath);
+        if (E::ModuleViewer()->TemplateExists($sTemplatePath)) {
+            return E::ModuleViewer()->Fetch($sTemplatePath);
         }
     }
 
-    public function InjectIndexLink($aParam)
+    public function InjectIndexLink()
     {
         $sTemplatePath = Plugin::GetTemplatePath(__CLASS__) . 'inject_index_link.tpl';
-        if ($this->Viewer_TemplateExists($sTemplatePath)) {
-            return $this->Viewer_Fetch($sTemplatePath);
+        if (E::ModuleViewer()->TemplateExists($sTemplatePath)) {
+            return E::ModuleViewer()->Fetch($sTemplatePath);
         }
     }
 
-    public function InjectProfileLink($aParam)
+    public function InjectProfileLink()
     {
         $sTemplatePath = Plugin::GetTemplatePath(__CLASS__) . 'inject_profile_link.tpl';
-        if ($this->Viewer_TemplateExists($sTemplatePath)) {
-            return $this->Viewer_Fetch($sTemplatePath);
+        if (E::ModuleViewer()->TemplateExists($sTemplatePath)) {
+            return E::ModuleViewer()->Fetch($sTemplatePath);
         }
     }
 }

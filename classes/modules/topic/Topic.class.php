@@ -121,6 +121,8 @@ class PluginDrafts_ModuleTopic extends PluginDrafts_Inherit_ModuleTopic
 
             return $this->GetTopicsByFilter($aFilter, $iPage, $iPerPage);
         }
+
+        return array();
     }
 
     /**

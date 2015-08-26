@@ -40,7 +40,7 @@ class PluginDrafts_ActionBlog extends PluginDrafts_Inherit_ActionBlog
     protected function EventTopics() {
         $sShowType = $this->sCurrentEvent;
         if ($sShowType == 'draft') {
-            if (!$this->User_GetUserCurrent() || !$this->User_GetUserCurrent()->isAdministrator()) {
+            if (!E::IsAdmin()) {
                 return parent::EventNotFound();
             }
         }
@@ -113,7 +113,7 @@ class PluginDrafts_ActionBlog extends PluginDrafts_Inherit_ActionBlog
             /**
              * Получаем число новых топиков в текущем блоге
              */
-            $this->iCountTopicsBlogNew = $this->Topic_GetCountTopicsByBlogNew($oBlog);
+            $this->iCountTopicsBlogNew = E::ModuleTopic()->GetCountTopicsByBlogNew($oBlog);
 
             E::ModuleViewer()->Assign('aPaging', $aPaging);
             E::ModuleViewer()->Assign('aTopics', $aTopics);

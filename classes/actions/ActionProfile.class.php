@@ -54,7 +54,7 @@ class PluginDrafts_ActionProfile extends PluginDrafts_Inherit_ActionProfile
             $iPage,
             Config::Get('module.topic.per_page'),
             Config::Get('pagination.pages.count'),
-            $this->oUserProfile->getUserWebPath() . 'created/draft'
+            $this->oUserProfile->getUserUrl() . 'created/draft'
         );
         /**
          * Загружаем переменные в шаблон
