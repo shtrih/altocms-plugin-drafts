@@ -10,7 +10,7 @@
         <lang name="russian">Александр Вереник, shtrih</lang>
     </author>
     <homepage>https://github.com/shtrih/livestreet_drafts</homepage>
-    <version>1.0.0</version>
+    <version>2.0.0</version>
     <dirname>drafts</dirname>
     <requires>
         <alto>
